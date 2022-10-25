@@ -10,12 +10,25 @@ public class OrderPageScooter {
     private final ChromeDriver driver;
 
     private final By name = By.xpath("//input[@placeholder ='* Имя']");
+
+    public WebElement getName() {
+        return driver.findElement(name);
+    }
+
+    public WebElement setName(String nameq) {
+        driver.findElement(name).sendKeys(nameq);
+        return null;
+    }
+
+    public WebElement setSurname(String nameq) {
+        driver.findElement(surname).sendKeys(nameq);
+        return null;
+    }
+
     private final By surname = By.xpath("//input[@placeholder ='* Фамилия']");
     private final By address = By.xpath("//input[@placeholder ='* Адрес: куда привезти заказ']");
     private final By station = By.xpath("//input[@placeholder ='* Станция метро']");
     private final By phoneNumber = By.xpath("//input[@placeholder ='* Телефон: на него позвонит курьер']");
-
-
     private final By calendar = By.xpath("//input[@placeholder ='* Когда привезти самокат']");
     private final By leaseTime = By.className("Dropdown-placeholder");
 
@@ -24,20 +37,20 @@ public class OrderPageScooter {
     }
 
     private final By listRentalTime = By.className("Dropdown-option");
-    ////*[@class='Dropdown-option']
     private final By blackScooter = By.id("black");
     private final By greyScooter = By.id("grey");
     private final By comment = By.xpath("//input[@placeholder ='Комментарий для курьера']");
 
-
     private final By next = By.className("Order_NextButton__1_rCA");
     private final By back = By.className("Order_Buttons__1xGrp");
     private final By order = By.className("Button_Button__ra12g Button_Middle__1CSJM");
-
 
     private final By placeAnOrderYes = By.xpath("//button[contains(text(), 'Да')]");
     private final By placeAnOrderNo = By.xpath("//button[contains(text(), 'Нет')]");
     private final By status = By.xpath("//button[contains(text(), 'Нет')]");
 
     public OrderPageScooter(ChromeDriver driver) { this.driver = driver; }
+
+
+
 }

@@ -13,6 +13,7 @@ public class HomePageScooter {
     private final By img = By.xpath("//img[@alt='Scooter blueprint']");
     private final By cookie = By.id("rcc-confirm-button");
     private final By modQuest = By.xpath("//div[text() = 'Вопросы о важном']");
+    private final By ordered = By.xpath("//button[contains(text(), 'Заказать')]");
 
     public By getTitle() { return title; }
 
@@ -31,5 +32,7 @@ public class HomePageScooter {
     public HomePageScooter(ChromeDriver driver) {
         this.driver = driver;
     }
+
+    public WebElement getOrdered() { return driver.findElement(ordered); }
 
 }

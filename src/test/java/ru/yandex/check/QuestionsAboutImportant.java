@@ -12,7 +12,7 @@ import ru.yandex.page.Questions;
 import static org.hamcrest.CoreMatchers.endsWith;
 
 
-public class Screening {
+public class QuestionsAboutImportant {
 
     public ChromeDriver driver;
     public Questions objQuestions;
