@@ -7,6 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class HomePageScooter {
     private final ChromeDriver driver;
+
 //селекторы на главной странице
     private final By title = By.className("Header_LogoScooter__3lsAR");
     private final By img = By.xpath("//img[@alt='Scooter blueprint']");
