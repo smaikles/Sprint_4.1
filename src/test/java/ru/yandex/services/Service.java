@@ -35,10 +35,8 @@ public class Service {
 
     //метод заполняет поля данными
 
-    public void inputText (WebElement element) {
-        this.element = element;
-        element.sendKeys();
+    public void inputText (WebElement element, String text) {
+               element.sendKeys(text);
+        }
 
     }
-
-}
