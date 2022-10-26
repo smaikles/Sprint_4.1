@@ -1,23 +1,40 @@
 package ru.yandex.services;
 
+import org.junit.rules.ExternalResource;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.io.File;
+import java.time.Duration;
 
-// веб драйвер для mozila
-public class Drivers {
+public class Drivers extends ExternalResource {
 
-        private static WebDriver driver;
+    private WebDriver driver;
 
-        private static WebDriver init() {
-            File driverPath = new File("");
-                    FirefoxOptions firefoxOptions = new FirefoxOptions();
-                    firefoxOptions.setHeadless(true);
-                    System.setProperty("webdriver.gecko.driver", driverPath.getAbsolutePath() + "C:\\chromedriver\\geckodriver.exe");
-                    driver = new FirefoxDriver(firefoxOptions);
-                    return driver;
-            }
+    public WebDriver getDriver() {
+        return driver;
+    }
+
+    @Override
+    protected void before() throws Throwable {
+
+        System.setProperty("webdriver.chrome.driver", "C:/chromedriver/chromedriver");
+        System.setProperty("webdriver.gecko.driver", "C:/chromedriver/geckodriver");
+
+
+        String browser = System.getenv("browser");
+
+        if ("ff".equals(browser)) {
+            driver = new FirefoxDriver();
+        } else {
+            driver = new ChromeDriver();
+        }
+
+      //  driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+    }
+
+    @Override
+    protected void after() {
+        driver.quit();
+    }
 }

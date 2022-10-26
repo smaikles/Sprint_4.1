@@ -4,14 +4,15 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Service {
-    private final ChromeDriver driver;
     private WebElement element;
-
-    public Service(ChromeDriver driver) {
+//    private final ChromeDriver driver;
+    private final FirefoxDriver driver;
+    public Service(FirefoxDriver driver) {
         this.driver = driver;
     }
     //метод переходит на сайт

@@ -2,11 +2,11 @@ package ru.yandex.page;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 
 public class HomePageScooter {
-    private final ChromeDriver driver;
+    private final FirefoxDriver driver;
 
 //селекторы на главной странице
     private final By title = By.className("Header_LogoScooter__3lsAR");
@@ -29,7 +29,7 @@ public class HomePageScooter {
         return driver.findElement(modQuest);
     }
 
-    public HomePageScooter(ChromeDriver driver) {
+    public HomePageScooter(FirefoxDriver driver) {
         this.driver = driver;
     }
 

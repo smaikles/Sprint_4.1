@@ -2,13 +2,13 @@ package ru.yandex.page;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.util.List;
 
 //селекторы в блоке с вопросами "Вопросы о важном"
 public class Questions {
-    private final ChromeDriver driver;
+    private final FirefoxDriver driver;
     private final By listQuestions = By.xpath("//*[@class='accordion__button']");
     private final By listAnswer = By.xpath("//div[@data-accordion-component='AccordionItemPanel']");
 
@@ -22,7 +22,7 @@ public class Questions {
         return driver.findElements(listAnswer);
     }
 
-    public Questions(ChromeDriver driver) {
+    public Questions(FirefoxDriver driver) {
         this.driver = driver;
     }
 

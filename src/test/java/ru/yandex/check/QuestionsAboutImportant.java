@@ -5,6 +5,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import ru.yandex.page.HomePageScooter;
 import ru.yandex.services.Service;
 import ru.yandex.page.Questions;
@@ -22,7 +24,9 @@ public class QuestionsAboutImportant {
     @Before
     public void setUp() {
 
-        driver = new ChromeDriver();
+    //    driver = new ChromeDriver();
+        FirefoxOptions firefoxOptions = new FirefoxOptions();
+        FirefoxDriver driver = new FirefoxDriver(firefoxOptions);
         objService = new Service(driver);
         objQuestions = new Questions(driver);
         objHomePage = new HomePageScooter(driver);
