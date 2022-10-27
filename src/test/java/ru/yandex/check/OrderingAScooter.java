@@ -4,6 +4,7 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -49,38 +50,32 @@ public class OrderingAScooter {
         @Test
         public void test_N11() {
 
-            objProfile.profileData("Антон", "Чехов", "119049, г Москва, ул Донская, д 8","89001002030" , "Сокол");
+        String name = "Антон";
+        String surname = "Чехов";
+        String address = "119049, г Москва, ул Донская, д 8";
+        String phoneNumber = "89001002030";
+        String station = "Сокол";
+        String comment = "Hello World - test 1";
+
+            objProfile.profileData(name, surname, address, phoneNumber, station);
             objService.click(objOrderPageScooter.getNext());
-
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-
             objProfile.Orderrer();
-            objService.inputText(objOrderPageScooter.getComment(), "Hello World - test 1");
+            objService.inputText(objOrderPageScooter.getComment(), comment);
             objService.click((objOrderPageScooter.getOrder()));
+
             objService.click((objOrderPageScooter.getPlaceAnOrderYes()));
+            System.out.println("шаг проверки2");
+             Assert.assertTrue(objOrderPageScooter.getOrderPlaced().getText().contains("Заказ оформлен"));
+            System.out.println("шаг проверки3");
 
-            Assert.assertTrue(objOrderPageScooter.getOrderPlaced().isDisplayed());
+            //проверяем, что заказ оформлен
+//            try {
+ //             Assert.assertTrue(objOrderPageScooter.getOrderPlaced().isDisplayed());
+//            } catch (NoSuchElementException e) {
+//                Assert.fail("заказ не оформлен");
+//            }
 
-            objService.click((objOrderPageScooter.getLookStatus()));
-            String good = "Антон";
-
-//            System.out.println(objOrderPageScooter.getListLookOrder().get(1).getText());
-
-            for (int i =0; i <9; i++) {
-                System.out.println(objOrderPageScooter.getListLookOrder().get(i).getText());
-            }
-            Assert.assertEquals("Текс не совпадает с ОР: ", objOrderPageScooter.getListLookOrder().get(0).getText(), good);
-
-
-
-
-//            objService.inputText(objOrderPageScooter.getAddress(), address);
     }
-
 
     @After
     public void teardown() {

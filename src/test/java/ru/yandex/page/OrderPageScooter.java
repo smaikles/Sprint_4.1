@@ -113,7 +113,7 @@ public class OrderPageScooter {
         return driver.findElement(orderPlaced);
     }
 
-    private final By orderPlaced = By.xpath("//div[(text()= 'Заказ оформлен')]");
+    private final By orderPlaced = By.xpath("//div[(text()= 'Заказ оформлен78')]");
 
     public WebElement getLookStatus() {
         return driver.findElement(lookStatus);
