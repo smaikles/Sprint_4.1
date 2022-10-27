@@ -1,7 +1,6 @@
 ### IntelliJ IDEA ###
-HELP.md
 target/
-.idea
+.idea/
 debug.log
 
 
