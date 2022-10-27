@@ -2,25 +2,23 @@ package ru.yandex.page;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.util.List;
 
+// Класс содержит локаторы в блоке с вопросами "Вопросы о важном"
 public class Questions {
-    private final ChromeDriver driver;
+    private final FirefoxDriver driver;
+    public Questions(FirefoxDriver driver) { this.driver = driver; }
+
+    // Локаторы из списка вопросов и ответов
     private final By listQuestions = By.xpath("//*[@class='accordion__button']");
     private final By listAnswer = By.xpath("//div[@data-accordion-component='AccordionItemPanel']");
 
-    public List<WebElement> getListQuestions() {
-        return  driver.findElements(listQuestions);
-    }
+    // Коллекция из элементов вопросов
+    public List<WebElement> getListQuestions() { return driver.findElements(listQuestions); }
 
-    public List<WebElement> getListAnswer() {
-        return  driver.findElements(listAnswer);
-    }
-
-    public Questions(ChromeDriver driver) {
-        this.driver = driver;
-    }
+    // Коллекция из элементов ответов
+    public List<WebElement> getListAnswer() { return driver.findElements(listAnswer); }
 
 }
