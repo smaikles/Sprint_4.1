@@ -109,6 +109,12 @@ public class OrderPageScooter {
 
     private final By placeAnOrderYes = By.xpath("//button[contains(text(), 'Да')]");
 
+    public WebElement getOrderPlaced() {
+        return driver.findElement(orderPlaced);
+    }
+
+    private final By orderPlaced = By.xpath("//div[(text()= 'Заказ оформлен')]");
+
     public WebElement getLookStatus() {
         return driver.findElement(lookStatus);
     }

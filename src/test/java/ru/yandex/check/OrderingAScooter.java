@@ -14,7 +14,6 @@ import ru.yandex.page.OrderPageScooter;
 import ru.yandex.page.Profile;
 import ru.yandex.services.Service;
 
-import java.io.File;
 
 public class OrderingAScooter {
 
@@ -63,11 +62,17 @@ public class OrderingAScooter {
             objService.inputText(objOrderPageScooter.getComment(), "Hello World - test 1");
             objService.click((objOrderPageScooter.getOrder()));
             objService.click((objOrderPageScooter.getPlaceAnOrderYes()));
+
+            Assert.assertTrue(objOrderPageScooter.getOrderPlaced().isDisplayed());
+
             objService.click((objOrderPageScooter.getLookStatus()));
-
-
             String good = "Антон";
-            System.out.println(objOrderPageScooter.getListLookOrder().get(1).getText());
+
+//            System.out.println(objOrderPageScooter.getListLookOrder().get(1).getText());
+
+            for (int i =0; i <9; i++) {
+                System.out.println(objOrderPageScooter.getListLookOrder().get(i).getText());
+            }
             Assert.assertEquals("Текс не совпадает с ОР: ", objOrderPageScooter.getListLookOrder().get(0).getText(), good);
 
 
