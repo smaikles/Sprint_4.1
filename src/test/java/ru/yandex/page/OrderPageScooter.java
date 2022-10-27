@@ -47,6 +47,7 @@ public class OrderPageScooter {
     public WebElement getLeaseTime() { return driver.findElement(leaseTime); }
     public WebElement getRentalTimeOneDay() { return driver.findElement(RentalTimeOneDay); }
     public WebElement getBlackScooter() { return driver.findElement(blackScooter); }
+    public WebElement getGreyScooter() { return driver.findElement(greyScooter); }
     public WebElement getComment() { return driver.findElement(comment); }
     public WebElement getNext() { return driver.findElement(next); }
     public WebElement getOrder() { return driver.findElement(order); }

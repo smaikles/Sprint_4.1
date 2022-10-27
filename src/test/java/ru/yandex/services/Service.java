@@ -10,14 +10,15 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Service {
     private WebElement element;
-//    private final ChromeDriver driver;
+    //    private final ChromeDriver driver;
     private final FirefoxDriver driver;
+
     public Service(FirefoxDriver driver) {
         this.driver = driver;
     }
+
     //метод переходит на сайт
     public void InInput() {
-
         driver.get("https://qa-scooter.praktikum-services.ru/");
     }
 
@@ -25,11 +26,13 @@ public class Service {
     public void scroll(WebElement element) {
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
     }
+
     //метод делает клик по выбранному элементу
     public Service click(WebElement element) {
-                element.click();
-                     return this;
+        element.click();
+        return this;
     }
+
     // метод производит ожидание появления выбранного элемента
     public void waitPageElement(By element) {
         new WebDriverWait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(element));
@@ -37,10 +40,10 @@ public class Service {
 
     //метод заполняет поля данными
 
-    public Service inputText (WebElement element, String text) {
-               element.sendKeys(text);
-               return this;
-        }
+    public Service inputText(WebElement element, String text) {
+        element.sendKeys(text);
+        return this;
+    }
 
     // метод проверки присутсвия элемента
     public boolean isElementPresent(By locatorKey) {
@@ -52,4 +55,4 @@ public class Service {
         }
     }
 
-    }
+}

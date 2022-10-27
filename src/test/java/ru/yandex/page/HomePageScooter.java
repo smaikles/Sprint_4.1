@@ -7,14 +7,18 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class HomePageScooter {
     private final FirefoxDriver driver;
-    public WebElement getOrdered() { return driver.findElement(ordered); }
+    public HomePageScooter(FirefoxDriver driver) {
+        this.driver = driver;
+    }
 
     // Локаторы для проверки первого сценария
     private final By cookie = By.id("rcc-confirm-button");
     private final By title = By.className("Header_LogoScooter__3lsAR");
     private final By img = By.xpath("//img[@alt='Scooter blueprint']");
     private final By modQuest = By.xpath("//div[text() = 'Вопросы о важном']");
-    private final By ordered = By.xpath("//button[contains(text(), 'Заказать')]");
+
+    private final By orderedTop = By.className("Button_Button__ra12g");
+    private final By orderedDown = By.xpath("//button[contains(@class, 'Button_Middle')]");
 
     // Преобразование локаторов в вебэлементы
     public By getTitle() { return title; }
@@ -27,8 +31,7 @@ public class HomePageScooter {
     public WebElement getmodQuest() {
         return driver.findElement(modQuest);
     }
-    public HomePageScooter(FirefoxDriver driver) {
-        this.driver = driver;
-    }
+    public WebElement getOrderedTop() { return driver.findElement(orderedTop); }
+    public WebElement getOrderedDown() { return driver.findElement(orderedDown); }
 
 }

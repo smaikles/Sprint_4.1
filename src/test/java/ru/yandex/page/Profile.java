@@ -9,9 +9,7 @@ public class Profile {
     public OrderPageScooter objOrderPageScooter;
     public FirefoxDriver driver;
 
-    public Profile(FirefoxDriver driver) {
-        this.driver = driver;
-    }
+    public Profile(FirefoxDriver driver) { this.driver = driver; }
 
     public Profile profileData(String name, String surname, String address, String phoneNumber, String station) {
         objOrderPageScooter = new OrderPageScooter(driver);
@@ -33,7 +31,7 @@ public class Profile {
         objOrderPageScooter.getDate().click();
         objOrderPageScooter.getLeaseTime().click();
         objOrderPageScooter.getRentalTimeOneDay().click();
-        objOrderPageScooter.getBlackScooter().click();
+
 
         return this;
     }

@@ -39,53 +39,50 @@ public class OrderingAScooter {
         objProfile = new Profile(driver);
 
         objService.InInput();
-        objService.click(objHomePage.getCookie())
-        .click(objHomePage.getOrdered());
-        objService.InInput();
-        objService.click(objHomePage.getOrdered());
+        objService.click(objHomePage.getCookie());
+ //       objService.click(objHomePage.getOrderedTop());
+
+//        objService.InInput();
+        objService.click(objHomePage.getOrderedDown());
+
         System.out.println("test start");
     }
-        @Test
-        public void test_N11() {
+   //  @Test
+        public void test_N1() {
 
-        String name = "Антон";
-        String surname = "Чехов";
-        String address = "119049, г Москва, ул Донская, д 8";
-        String phoneNumber = "89001002030";
-        String station = "Сокол";
-        String comment = "Hello World - test 1";
-
-            objProfile.profileData(name, surname, address, phoneNumber, station);
+            objProfile.profileData("Антон", "Чехов", "119049, г Москва, ул Донская, д 8", "89001002030", "Сокол");
             objService.click(objOrderPageScooter.getNext());
             objProfile.Orderrer();
-
-            objService.inputText(objOrderPageScooter.getComment(), comment)
+            objOrderPageScooter.getBlackScooter().click();
+            objService.inputText(objOrderPageScooter.getComment(), "Hello World - test 1")
                        .click((objOrderPageScooter.getOrder()))
                        .click((objOrderPageScooter.getPlaceAnOrderYes()));
-//            System.out.println("шаг проверки2");
-//           // assertTrue(objOrderPageScooter.getOrderPlaced().getText().contains("Заказ оформлен"));
-            System.out.println("шаг проверки3");
-
-
-          //  objService.click(objOrderPageScooter.getLookStatus());
-
-          //  objService.isElementPresent(objOrderPageScooter.orderPlaced);
-            //проверяем, что заказ оформлен
 
               assertTrue("Отсутствует сообщение об успешном завершении заказа",objService.isElementPresent(objOrderPageScooter.orderPlaced));
 
-
-
-
-
     }
 
+        @Test
+        public void test_N2() {
+
+            objProfile.profileData("Александр", "Пушкин", "101000, г Москва, ул Пушкина, д Колотушкина",
+                    "89991002039", "Лубянка");
+            objService.click(objOrderPageScooter.getNext());
+            objProfile.Orderrer();
+            objOrderPageScooter.getGreyScooter().click();
+            objService.inputText(objOrderPageScooter.getComment(), "Hello World - test 2")
+                    .click((objOrderPageScooter.getOrder()))
+                    .click((objOrderPageScooter.getPlaceAnOrderYes()));
+
+            assertTrue("Отсутствует сообщение об успешном завершении заказа",objService.isElementPresent(objOrderPageScooter.orderPlaced));
+
+    }
     @After
     public void teardown() {
         System.out.println("test close");
       //  driver.quit();
     }
-    }
+}
 
 
 
