@@ -3,17 +3,22 @@ package ru.yandex.page;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
+import ru.yandex.services.Service;
 
 public class Profile {
 
     public OrderPageScooter objOrderPageScooter;
     public FirefoxDriver driver;
+    public Service objService;
+    public HomePageScooter objHomePage;
 
     public Profile(FirefoxDriver driver) { this.driver = driver; }
 
     public Profile profileData(String name, String surname, String address, String phoneNumber, String station) {
-        objOrderPageScooter = new OrderPageScooter(driver);
+       objOrderPageScooter = new OrderPageScooter(driver);
+       objService = new Service(driver);
 
+        objService.waitPageElement(objOrderPageScooter.getTitleOrder());
         objOrderPageScooter.getName().sendKeys(name);
         objOrderPageScooter.getSurname().sendKeys(surname);
         objOrderPageScooter.getAddress().sendKeys(address);
@@ -26,12 +31,13 @@ public class Profile {
 
     public Profile Orderrer() {
         objOrderPageScooter = new OrderPageScooter(driver);
+        objService = new Service(driver);
 
+        objService.waitPageElement(objOrderPageScooter.getTitleRent());
         objOrderPageScooter.getCalendar().click();
         objOrderPageScooter.getDate().click();
         objOrderPageScooter.getLeaseTime().click();
         objOrderPageScooter.getRentalTimeOneDay().click();
-
 
         return this;
     }

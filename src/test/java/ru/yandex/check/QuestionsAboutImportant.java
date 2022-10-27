@@ -31,10 +31,10 @@ public class QuestionsAboutImportant {
         objQuestions = new Questions(driver);
         objHomePage = new HomePageScooter(driver);
 
-        objService.InInput();
-        objService.click(objHomePage.getCookie());
-        objService.waitPageElement(objHomePage.getImg());
-        objService.scroll(objHomePage.getmodQuest());
+//        objService.InInput();
+//        objService.click(objHomePage.getCookie());
+//        objService.waitPageElement(objHomePage.getImg());
+//        objService.scroll(objHomePage.getmodQuest());
 
         System.out.println("test start");
 

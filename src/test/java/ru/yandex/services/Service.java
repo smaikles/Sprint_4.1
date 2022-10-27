@@ -7,8 +7,14 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import ru.yandex.page.HomePageScooter;
 
 public class Service {
+
+    //Класс описывает большинство однообразных действий
+    public HomePageScooter objHomePage;
+
+
     private WebElement element;
     //    private final ChromeDriver driver;
     private final FirefoxDriver driver;
@@ -53,6 +59,36 @@ public class Service {
         } catch (org.openqa.selenium.NoSuchElementException e) {
             return false;
         }
+    }
+
+    public Service orderInTop() {
+        objHomePage = new HomePageScooter(driver);
+
+        InInput();
+        click(objHomePage.getCookie());
+        click(objHomePage.getOrderedTop());
+        return this;
+    }
+
+    public Service orderInDown() {
+        objHomePage = new HomePageScooter(driver);
+
+        InInput();
+        click(objHomePage.getCookie());
+        waitPageElement(objHomePage.getImg());
+        scroll(objHomePage.getOrderedDown());
+        click(objHomePage.getOrderedDown());
+        return this;
+    }
+
+    public Service checkInQuest() {
+        objHomePage = new HomePageScooter(driver);
+
+        InInput();
+        click(objHomePage.getCookie());
+        waitPageElement(objHomePage.getImg());
+        scroll(objHomePage.getmodQuest());
+        return this;
     }
 
 }

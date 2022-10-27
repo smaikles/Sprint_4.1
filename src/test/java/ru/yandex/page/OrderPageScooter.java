@@ -12,6 +12,8 @@ public class OrderPageScooter {
 
 
     // Локаторы для проверки второго сценария
+    private final By titleOrder = By.xpath("//div[(text()= 'Для кого самокат')]");
+    private final By titleRent = By.xpath("//div[(text()= 'Про аренду')]");
     private final By name = By.xpath("//input[@placeholder ='* Имя']");
     private final By surname = By.xpath("//input[@placeholder ='* Фамилия']");
     private final By address = By.xpath("//input[@placeholder ='* Адрес: куда привезти заказ']");
@@ -54,5 +56,7 @@ public class OrderPageScooter {
     public WebElement getPlaceAnOrderYes() { return driver.findElement(placeAnOrderYes); }
     public WebElement getOrderPlaced() { return driver.findElement(orderPlaced); }
     public WebElement getLookStatus() { return driver.findElement(lookStatus); }
+    public By getTitleOrder() { return titleOrder; }
+    public By getTitleRent() { return titleRent; }
 
 }
