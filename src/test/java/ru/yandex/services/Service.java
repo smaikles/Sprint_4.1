@@ -7,14 +7,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import ru.yandex.page.HomePageScooter;
+import ru.yandex.page.HomePage;
 
+// Класс описывает большинство однообразных действий
 public class Service {
-
-    //Класс описывает большинство однообразных действий
-    public HomePageScooter objHomePage;
-
-
+    public HomePage objHomePage;
     private WebElement element;
     //    private final ChromeDriver driver;
     private final FirefoxDriver driver;
@@ -23,35 +20,35 @@ public class Service {
         this.driver = driver;
     }
 
-    //метод переходит на сайт
+    // Метод переходит на сайт
     public void InInput() {
         driver.get("https://qa-scooter.praktikum-services.ru/");
     }
 
-    //метод скролит до выбранного элемента
+    // Метод скролит до выбранного элемента
     public void scroll(WebElement element) {
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
     }
 
-    //метод делает клик по выбранному элементу
+    // Метод делает клик по выбранному элементу
     public Service click(WebElement element) {
         element.click();
         return this;
     }
 
-    // метод производит ожидание появления выбранного элемента
-    public void waitPageElement(By element) {
+    // Метод производит ожидание появления выбранного элемента
+    public Service waitPageElement(By element) {
         new WebDriverWait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(element));
+        return this;
     }
 
-    //метод заполняет поля данными
-
+    // Метод заполняет поля данными
     public Service inputText(WebElement element, String text) {
         element.sendKeys(text);
         return this;
     }
 
-    // метод проверки присутсвия элемента
+    // Метод проверки присутсвия элемента
     public boolean isElementPresent(By locatorKey) {
         try {
             driver.findElement(locatorKey);
@@ -61,8 +58,9 @@ public class Service {
         }
     }
 
+    // Метод перехода на сайт и выбора заказа с верху
     public Service orderInTop() {
-        objHomePage = new HomePageScooter(driver);
+        objHomePage = new HomePage(driver);
 
         InInput();
         click(objHomePage.getCookie());
@@ -70,8 +68,9 @@ public class Service {
         return this;
     }
 
+    // Метод перехода на сайт и выбора заказа с низу
     public Service orderInDown() {
-        objHomePage = new HomePageScooter(driver);
+        objHomePage = new HomePage(driver);
 
         InInput();
         click(objHomePage.getCookie());
@@ -81,8 +80,9 @@ public class Service {
         return this;
     }
 
+    // Метод перехода на сайт и скролинга к списку вопросов
     public Service checkInQuest() {
-        objHomePage = new HomePageScooter(driver);
+        objHomePage = new HomePage(driver);
 
         InInput();
         click(objHomePage.getCookie());

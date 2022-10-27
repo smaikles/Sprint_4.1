@@ -5,39 +5,43 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import ru.yandex.services.Service;
 
+// Класс содержит методы для заполнение данных по заказу
 public class Profile {
 
-    public OrderPageScooter objOrderPageScooter;
+    public OrderPage objOrderPage;
     public FirefoxDriver driver;
     public Service objService;
-    public HomePageScooter objHomePage;
 
-    public Profile(FirefoxDriver driver) { this.driver = driver; }
+    public Profile(FirefoxDriver driver) {
+        this.driver = driver;
+    }
 
+    // Метод заполнения профиля клиента
     public Profile profileData(String name, String surname, String address, String phoneNumber, String station) {
-       objOrderPageScooter = new OrderPageScooter(driver);
-       objService = new Service(driver);
+        objOrderPage = new OrderPage(driver);
+        objService = new Service(driver);
 
-        objService.waitPageElement(objOrderPageScooter.getTitleOrder());
-        objOrderPageScooter.getName().sendKeys(name);
-        objOrderPageScooter.getSurname().sendKeys(surname);
-        objOrderPageScooter.getAddress().sendKeys(address);
-        objOrderPageScooter.getPhoneNumber().sendKeys(phoneNumber);
-        new Actions(driver).moveToElement(objOrderPageScooter.getStation()).click().sendKeys(station)
+        objService.waitPageElement(objOrderPage.getTitleOrder());
+        objOrderPage.getName().sendKeys(name);
+        objOrderPage.getSurname().sendKeys(surname);
+        objOrderPage.getAddress().sendKeys(address);
+        objOrderPage.getPhoneNumber().sendKeys(phoneNumber);
+        new Actions(driver).moveToElement(objOrderPage.getStation()).click().sendKeys(station)
                 .sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ENTER).build().perform();
 
         return this;
     }
 
+    // Метод заполнения данных по заказу
     public Profile Orderrer() {
-        objOrderPageScooter = new OrderPageScooter(driver);
+        objOrderPage = new OrderPage(driver);
         objService = new Service(driver);
 
-        objService.waitPageElement(objOrderPageScooter.getTitleRent());
-        objOrderPageScooter.getCalendar().click();
-        objOrderPageScooter.getDate().click();
-        objOrderPageScooter.getLeaseTime().click();
-        objOrderPageScooter.getRentalTimeOneDay().click();
+        objService.waitPageElement(objOrderPage.getTitleRent());
+        objOrderPage.getCalendar().click();
+        objOrderPage.getDate().click();
+        objOrderPage.getLeaseTime().click();
+        objOrderPage.getRentalTimeOneDay().click();
 
         return this;
     }

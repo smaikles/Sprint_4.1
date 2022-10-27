@@ -7,36 +7,32 @@ import org.junit.Test;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-import ru.yandex.page.HomePageScooter;
+import ru.yandex.page.HomePage;
 import ru.yandex.services.Service;
 import ru.yandex.page.Questions;
 
 import static org.hamcrest.CoreMatchers.endsWith;
 
 
-public class QuestionsAboutImportant {
+public class RunTestQuest {
 
     public ChromeDriver driver;
     public Questions objQuestions;
-    public HomePageScooter objHomePage;
+    public HomePage objHomePage;
     public Service objService;
 
     @Before
     public void setUp() {
 
-    //    driver = new ChromeDriver();
+        driver = new ChromeDriver();
         FirefoxOptions firefoxOptions = new FirefoxOptions();
         FirefoxDriver driver = new FirefoxDriver(firefoxOptions);
         objService = new Service(driver);
         objQuestions = new Questions(driver);
-        objHomePage = new HomePageScooter(driver);
-
-//        objService.InInput();
-//        objService.click(objHomePage.getCookie());
-//        objService.waitPageElement(objHomePage.getImg());
-//        objService.scroll(objHomePage.getmodQuest());
-
+        objHomePage = new HomePage(driver);
         System.out.println("test start");
+
+        objService.checkInQuest();
 
     }
 

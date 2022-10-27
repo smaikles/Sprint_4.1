@@ -5,10 +5,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 
-
-public class OrderPageScooter {
+// Класс содержит локаторы и вебэлементы для оформления заказа
+public class OrderPage {
     private final FirefoxDriver driver;
-    public OrderPageScooter(FirefoxDriver driver) { this.driver = driver; }
+    public OrderPage(FirefoxDriver driver) { this.driver = driver; }
 
 
     // Локаторы для проверки второго сценария
@@ -31,12 +31,7 @@ public class OrderPageScooter {
     private final By placeAnOrderYes = By.xpath("//button[contains(text(), 'Да')]");
     public final By orderPlaced = By.xpath("//div[(text()= 'Заказ оформлен')]");
     private final By lookStatus = By.xpath("//button[contains(text(), 'Посмотреть статус')]");
-    private final By orderWaitingPage = By.xpath("//div[contains(text(), 'Самокат на складе')]");
-    private final By placeAnOrderNo = By.xpath("//button[contains(text(), 'Нет')]");
-    private final By status = By.xpath("//button[contains(text(), 'Нет')]");
 
-    // Проверка что заказ состоялся
-    private final By listLookOrder = By.xpath("//div[@class='Track_Value__15eEX']");
 
     // Преобразование локаторов в вебэлементы
     public WebElement getName() { return driver.findElement(name); }
@@ -54,8 +49,6 @@ public class OrderPageScooter {
     public WebElement getNext() { return driver.findElement(next); }
     public WebElement getOrder() { return driver.findElement(order); }
     public WebElement getPlaceAnOrderYes() { return driver.findElement(placeAnOrderYes); }
-    public WebElement getOrderPlaced() { return driver.findElement(orderPlaced); }
-    public WebElement getLookStatus() { return driver.findElement(lookStatus); }
     public By getTitleOrder() { return titleOrder; }
     public By getTitleRent() { return titleRent; }
 
