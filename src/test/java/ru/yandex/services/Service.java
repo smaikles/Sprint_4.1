@@ -26,8 +26,9 @@ public class Service {
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
     }
     //метод делает клик по выбранному элементу
-    public void click(WebElement element) {
+    public Service click(WebElement element) {
                 element.click();
+                     return this;
     }
     // метод производит ожидание появления выбранного элемента
     public void waitPageElement(By element) {
@@ -36,8 +37,19 @@ public class Service {
 
     //метод заполняет поля данными
 
-    public void inputText (WebElement element, String text) {
+    public Service inputText (WebElement element, String text) {
                element.sendKeys(text);
+               return this;
         }
+
+    // метод проверки присутсвия элемента
+    public boolean isElementPresent(By locatorKey) {
+        try {
+            driver.findElement(locatorKey);
+            return true;
+        } catch (org.openqa.selenium.NoSuchElementException e) {
+            return false;
+        }
+    }
 
     }

@@ -1,11 +1,9 @@
 package ru.yandex.check;
 
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.chrome.ChromeDriver;
+import static org.junit.Assert.assertTrue;
 
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
@@ -41,8 +39,8 @@ public class OrderingAScooter {
         objProfile = new Profile(driver);
 
         objService.InInput();
-        objService.click(objHomePage.getCookie());
-        objService.click(objHomePage.getOrdered());
+        objService.click(objHomePage.getCookie())
+        .click(objHomePage.getOrdered());
         objService.InInput();
         objService.click(objHomePage.getOrdered());
         System.out.println("test start");
@@ -60,20 +58,25 @@ public class OrderingAScooter {
             objProfile.profileData(name, surname, address, phoneNumber, station);
             objService.click(objOrderPageScooter.getNext());
             objProfile.Orderrer();
-            objService.inputText(objOrderPageScooter.getComment(), comment);
-            objService.click((objOrderPageScooter.getOrder()));
 
-            objService.click((objOrderPageScooter.getPlaceAnOrderYes()));
-            System.out.println("шаг проверки2");
-             Assert.assertTrue(objOrderPageScooter.getOrderPlaced().getText().contains("Заказ оформлен"));
+            objService.inputText(objOrderPageScooter.getComment(), comment)
+                       .click((objOrderPageScooter.getOrder()))
+                       .click((objOrderPageScooter.getPlaceAnOrderYes()));
+//            System.out.println("шаг проверки2");
+//           // assertTrue(objOrderPageScooter.getOrderPlaced().getText().contains("Заказ оформлен"));
             System.out.println("шаг проверки3");
 
+
+          //  objService.click(objOrderPageScooter.getLookStatus());
+
+          //  objService.isElementPresent(objOrderPageScooter.orderPlaced);
             //проверяем, что заказ оформлен
-//            try {
- //             Assert.assertTrue(objOrderPageScooter.getOrderPlaced().isDisplayed());
-//            } catch (NoSuchElementException e) {
-//                Assert.fail("заказ не оформлен");
-//            }
+
+              assertTrue("Отсутствует сообщение об успешном завершении заказа",objService.isElementPresent(objOrderPageScooter.orderPlaced));
+
+
+
+
 
     }
 

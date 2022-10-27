@@ -15,16 +15,6 @@ public class OrderPageScooter {
         return driver.findElement(name);
     }
 
-    public WebElement setName(String nameq) {
-        driver.findElement(name).sendKeys(nameq);
-        return null;
-    }
-
-    public WebElement setSurname(String nameq) {
-        driver.findElement(surname).sendKeys(nameq);
-        return null;
-    }
-
     public WebElement getSurname() {
         return driver.findElement(surname);
     }
@@ -45,21 +35,19 @@ public class OrderPageScooter {
         return driver.findElement(station);
     }
 
-    private final By station = By.xpath("//input[@placeholder ='* Станция метро']");
-    public  final By station_CHERKIZOVSKAYA = By.xpath(".//li[@data-index='1']");
-    private final By phoneNumber = By.xpath("//input[@placeholder ='* Телефон: на него позвонит курьер']");
-
     public WebElement getCalendar() {
         return driver.findElement(calendar);
     }
 
+    private final By station = By.xpath("//input[@placeholder ='* Станция метро']");
+    private final By phoneNumber = By.xpath("//input[@placeholder ='* Телефон: на него позвонит курьер']");
     private final By calendar = By.xpath("//input[@placeholder ='* Когда привезти самокат']");
 
     public WebElement getDate() {
         return driver.findElement(date);
     }
 
-    private final By date = By.xpath("//div[@aria-label='Choose воскресенье, 6-е ноября 2022 г.']");
+    private final By date = By.xpath("//div[contains(@class, 'day--today')]");
 
     public WebElement getLeaseTime() {
         return driver.findElement(leaseTime);
@@ -113,7 +101,7 @@ public class OrderPageScooter {
         return driver.findElement(orderPlaced);
     }
 
-    private final By orderPlaced = By.xpath("//div[(text()= 'Заказ оформлен78')]");
+    public final By orderPlaced = By.xpath("//div[(text()= 'Заказ оформлен')]");
 
     public WebElement getLookStatus() {
         return driver.findElement(lookStatus);
