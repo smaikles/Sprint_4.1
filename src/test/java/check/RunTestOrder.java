@@ -74,7 +74,7 @@ public class RunTestOrder {
                 .waitPageElement(objHomePage.getImg());
     }
 
-    @Test
+    @Test // Создает заказ с верхней кнопки
     public void orderInTop() {
         objService.click(objHomePage.getOrderedTop());
         objProfile.profileData(name, surname, address, phoneNumber, station);
@@ -91,7 +91,7 @@ public class RunTestOrder {
 
     }
 
-    @Test
+    @Test // Создает заказ с нижней кнопки
     public void orderInDown() {
         objService.scroll(objHomePage.getOrderedDown())
                 .click(objHomePage.getOrderedDown());
