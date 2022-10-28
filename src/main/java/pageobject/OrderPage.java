@@ -23,7 +23,8 @@ public class OrderPage {
     private final By date = By.xpath("//div[contains(@class, 'day--today')]"); // поле выбора даты доставки
     private final By leaseTime = By.className("Dropdown-placeholder"); // элемент выбора срока аренды
     private final By RentalTimeOneDay = By.xpath(".//div[@class='Dropdown-menu']/div[text()='сутки']"); // элемнт выбора срока аренды
-    private final By colorScooter = By.id("black"); // элемент выбора цвета
+    private final By blackScooter = By.id("black"); // элемент выбора цвета
+    private final By greyScooter = By.id("grey"); // элемент выбора цвета
     private final By comment = By.xpath("//input[@placeholder ='Комментарий для курьера']"); // поле коментария
     private final By next = By.cssSelector(".Button_Button__ra12g.Button_Middle__1CSJM"); // кнопка далее
     private final By order = By.xpath("//div[@class='Order_Buttons__1xGrp']//button[contains(text(), 'Заказать')]"); // кнопка заказать
@@ -41,7 +42,8 @@ public class OrderPage {
     public WebElement getDate() { return driver.findElement(date); }
     public WebElement getLeaseTime() { return driver.findElement(leaseTime); }
     public WebElement getRentalTimeOneDay() { return driver.findElement(RentalTimeOneDay); }
-    public WebElement getColorScooter() { return driver.findElement(colorScooter); }
+    public WebElement getBlackScooter() { return driver.findElement(blackScooter); }
+    public WebElement getGreyScooter() { return driver.findElement(greyScooter); }
     public WebElement getComment() { return driver.findElement(comment); }
     public WebElement getNext() { return driver.findElement(next); }
     public WebElement getOrder() { return driver.findElement(order); }

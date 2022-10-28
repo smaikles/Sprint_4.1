@@ -9,7 +9,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import pageobject.HomePage;
 import services.Service;
-//import pageobject.Questions;
+
 
 import static org.hamcrest.CoreMatchers.endsWith;
 
@@ -17,8 +17,6 @@ import static org.hamcrest.CoreMatchers.endsWith;
 public class RunTestQuest {
 
     public ChromeDriver driver;
-
- //   public Questions objQuestions;
 
     public HomePage objHomePage;
     public Service objService;
@@ -30,7 +28,6 @@ public class RunTestQuest {
         FirefoxOptions firefoxOptions = new FirefoxOptions();
         FirefoxDriver driver = new FirefoxDriver(firefoxOptions);
         objService = new Service(driver);
-    //    objQuestions = new Questions(driver);
         objHomePage = new HomePage(driver);
         System.out.println("test start");
 

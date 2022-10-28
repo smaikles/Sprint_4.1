@@ -13,7 +13,7 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 
 import pageobject.HomePage;
 import pageobject.OrderPage;
-import services.Profile;
+import steps.Profile;
 import services.Service;
 
 @RunWith(Parameterized.class)
@@ -34,7 +34,7 @@ public class RunTestOrder {
     private final String station;
     private final String comment;
 
-    public RunTestOrder(String name, String surname, String address, String phoneNumber, String station,String comment){
+    public RunTestOrder(String name, String surname, String address, String phoneNumber, String station, String comment) {
         this.name = name;
         this.surname = surname;
         this.address = address;
@@ -45,12 +45,14 @@ public class RunTestOrder {
 
 
     @Parameterized.Parameters
-    public static Object[][] getCredentials() {
-        return new Object[][] {
-                {"Антон", "Чехов", "119049, г Москва, ул Донская, д 8", "89001002030", "Сокол", "Комментарий в тесте № 1"},
-                {"Александр", "Пушкин", "101000, г Москва, ул Пушкина, д Колотушкина","+79991002039", "Лубянка", " Комментарий в тесте № 2"}
+    public static Object[][] getData() {
+        return new Object[][]{
+                {"Антон", "Чехов", "119049, г Москва, ул Донская, д 18", "89001002030", "Сокол", "Комментарий в тесте № 1"},
+                {"Александр", "Пушкин", "101000, г Москва, ул Пушкина, д 7", "+79991002039", "Лубянка", " Комментарий в тесте № 2"}
         };
+
     }
+
     @Before
     public void setUpOrder() {
         //  driver = new ChromeDriver();
@@ -66,17 +68,39 @@ public class RunTestOrder {
         objProfile = new Profile(driver);
 
         System.out.println("test start");
+
+        objService.InInput()
+                .click(objHomePage.getCookie())
+                .waitPageElement(objHomePage.getImg());
     }
 
     @Test
-    public void test_n() {
-        objService.orderInTop();
-//      objService.orderInDown();
+    public void orderInTop() {
+        objService.click(objHomePage.getOrderedTop());
         objProfile.profileData(name, surname, address, phoneNumber, station);
         objService.click(objOrderPage.getNext());
         objProfile.Orderrer();
-        objService.click(objOrderPage.getColorScooter())
-                .inputText(objOrderPage.getComment(),comment)
+
+        objService.click(objOrderPage.getBlackScooter())
+                .inputText(objOrderPage.getComment(), comment)
+                .click((objOrderPage.getOrder()))
+                .click((objOrderPage.getPlaceAnOrderYes()));
+
+        assertTrue("Отсутствует сообщение об успешном завершении заказа",
+                objService.isElementPresent(objOrderPage.orderPlaced));
+
+    }
+
+    @Test
+    public void orderInDown() {
+        objService.scroll(objHomePage.getOrderedDown())
+                .click(objHomePage.getOrderedDown());
+        objProfile.profileData(name, surname, address, phoneNumber, station);
+        objService.click(objOrderPage.getNext());
+        objProfile.Orderrer();
+
+        objService.click(objOrderPage.getGreyScooter())
+                .inputText(objOrderPage.getComment(), comment)
                 .click((objOrderPage.getOrder()))
                 .click((objOrderPage.getPlaceAnOrderYes()));
 

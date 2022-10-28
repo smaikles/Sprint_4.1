@@ -1,9 +1,10 @@
-package services;
+package steps;
 
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import pageobject.OrderPage;
+import services.Service;
 
 // Класс содержит методы для заполнение данных по заказу
 public class Profile {

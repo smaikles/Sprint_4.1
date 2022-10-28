@@ -20,17 +20,20 @@ public class Service {
     }
 
     // Метод переходит на сайт
-    public void InInput() {
+    public Service InInput() {
         driver.get("https://qa-scooter.praktikum-services.ru/");
+        return this;
     }
 
     // Метод скролит до выбранного элемента
-    public void scroll(WebElement element) {
+    public Service scroll(WebElement element) {
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
+        return this;
     }
 
-    // Метод делает клик по выбранному элементу
+    // Метод делает скрол и клик по выбранного элемента
     public Service click(WebElement element) {
+        scroll(element);
         element.click();
         return this;
     }
@@ -55,28 +58,6 @@ public class Service {
         } catch (org.openqa.selenium.NoSuchElementException e) {
             return false;
         }
-    }
-
-    // Метод перехода на сайт и выбора заказа с верху
-    public Service orderInTop() {
-        objHomePage = new HomePage(driver);
-
-        InInput();
-        click(objHomePage.getCookie());
-        click(objHomePage.getOrderedTop());
-        return this;
-    }
-
-    // Метод перехода на сайт и выбора заказа с низу
-    public Service orderInDown() {
-        objHomePage = new HomePage(driver);
-
-        InInput();
-        click(objHomePage.getCookie());
-        waitPageElement(objHomePage.getImg());
-        scroll(objHomePage.getOrderedDown());
-        click(objHomePage.getOrderedDown());
-        return this;
     }
 
     // Метод перехода на сайт и скролинга к списку вопросов
