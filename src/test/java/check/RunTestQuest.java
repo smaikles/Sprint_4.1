@@ -56,7 +56,7 @@ public class RunTestQuest {
     }
 
 
-    // коллекция тестов для проверки блока Вопросы о важном
+    // коллекция тестов для проверки блока "Вопросы о важном"
     @Test
     public void test_n() {
         objService.click(objHomePage.getListQuestions().get(index));
