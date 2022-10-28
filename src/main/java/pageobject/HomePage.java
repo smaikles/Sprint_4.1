@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import java.util.List;
+
 // Класс содержит локаторы и вебэлементы главной странице
 public class HomePage {
     private final FirefoxDriver driver;
@@ -18,6 +20,10 @@ public class HomePage {
     private final By orderedTop = By.className("Button_Button__ra12g"); // кнопка заказать вверху сайта
     private final By orderedDown = By.xpath("//button[contains(@class, 'Button_Middle')]"); // кнопка заказать внизу сайта
 
+    // Локаторы из списка вопросов и ответов
+    private final By listQuestions = By.xpath("//*[@class='accordion__button']"); // элемент вопросов
+    private final By listAnswer = By.xpath("//div[@data-accordion-component='AccordionItemPanel']"); // элемент ответов
+
     // Преобразование локаторов в вебэлементы
     public By getImg() {
         return img;
@@ -30,5 +36,11 @@ public class HomePage {
     }
     public WebElement getOrderedTop() { return driver.findElement(orderedTop); }
     public WebElement getOrderedDown() { return driver.findElement(orderedDown); }
+
+    // Коллекция из элементов вопросов
+    public List<WebElement> getListQuestions() { return driver.findElements(listQuestions); }
+
+    // Коллекция из элементов ответов
+    public List<WebElement> getListAnswer() { return driver.findElements(listAnswer); }
 
 }

@@ -69,7 +69,7 @@ public class RunTestOrder {
     }
 
     @Test
-    public void test_N1() {
+    public void test_n() {
         objService.orderInTop();
 //      objService.orderInDown();
         objProfile.profileData(name, surname, address, phoneNumber, station);
