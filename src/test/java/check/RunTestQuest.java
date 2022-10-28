@@ -1,4 +1,4 @@
-package ru.yandex.check;
+package check;
 
 import org.junit.After;
 import org.junit.Assert;
@@ -7,9 +7,9 @@ import org.junit.Test;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-import ru.yandex.page.HomePage;
-import ru.yandex.services.Service;
-import ru.yandex.page.Questions;
+import page.HomePage;
+import services.Service;
+import page.Questions;
 
 import static org.hamcrest.CoreMatchers.endsWith;
 

@@ -1,13 +1,12 @@
-package ru.yandex.services;
+package services;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import ru.yandex.page.HomePage;
+import page.HomePage;
 
 // Класс описывает большинство однообразных действий
 public class Service {

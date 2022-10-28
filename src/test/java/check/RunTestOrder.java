@@ -1,4 +1,4 @@
-package ru.yandex.check;
+package check;
 
 import org.junit.After;
 import org.junit.Before;
@@ -11,10 +11,10 @@ import org.junit.runners.Parameterized;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
-import ru.yandex.page.HomePage;
-import ru.yandex.page.OrderPage;
-import ru.yandex.services.Profile;
-import ru.yandex.services.Service;
+import page.HomePage;
+import page.OrderPage;
+import services.Profile;
+import services.Service;
 
 @RunWith(Parameterized.class)
 public class RunTestOrder {

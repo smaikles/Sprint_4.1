@@ -1,4 +1,4 @@
-package ru.yandex.page;
+package page;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;

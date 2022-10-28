@@ -1,9 +1,9 @@
-package ru.yandex.services;
+package services;
 
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
-import ru.yandex.page.OrderPage;
+import page.OrderPage;
 
 // Класс содержит методы для заполнение данных по заказу
 public class Profile {
