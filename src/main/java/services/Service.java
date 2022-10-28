@@ -58,15 +58,4 @@ public class Service {
         }
     }
 
-    // Метод перехода на сайт и скролинга к списку вопросов
-    public Service checkInQuest() {
-        objHomePage = new HomePage(driver);
-
-        InInput();
-        click(objHomePage.getCookie());
-        waitPageElement(objHomePage.getImg());
-        scroll(objHomePage.getmodQuest());
-        return this;
-    }
-
 }

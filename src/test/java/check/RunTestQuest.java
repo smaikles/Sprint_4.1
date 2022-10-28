@@ -1,9 +1,6 @@
 package check;
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -16,10 +13,10 @@ import static org.junit.matchers.JUnitMatchers.containsString;
 @RunWith(Parameterized.class)
 public class RunTestQuest {
 
-    public ChromeDriver driver;
+    public static ChromeDriver driver;
 
-    public HomePage objHomePage;
-    public Service objService;
+    public static HomePage objHomePage;
+    public static Service objService;
 
     private final String checkedText;
     private final int index;
@@ -46,20 +43,18 @@ public class RunTestQuest {
         };
     }
 
-    @Before
-    public void setUp() {
+    //Выполнится окрытие браузера и вход на сайт, перемещение к блоку вопросов
+    @BeforeClass
+    public static void globalSetup() {
 
         driver = new ChromeDriver();
-
         objService = new Service(driver);
         objHomePage = new HomePage(driver);
-        System.out.println("test start");
-         // запуск сайта
-         objService.checkInQuest();
-
-
-
+        objService.InInput();
+        objService.click(objHomePage.getCookie());
+        objService.click(objHomePage.getmodQuest());
     }
+
 
     // коллекция тестов для проверки блока Вопросы о важном
     @Test
@@ -68,8 +63,8 @@ public class RunTestQuest {
         Assert.assertThat("Текс не совпадает с ОР: ", objHomePage.getListAnswer().get(index).getText(), containsString(checkedText));
     }
 
-    @After
-    public void teardown() {
+    @AfterClass
+    public static void teardown() {
         System.out.println("test close");
         driver.quit();
     }
