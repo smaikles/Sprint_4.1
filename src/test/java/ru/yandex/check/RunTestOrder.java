@@ -13,7 +13,7 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 
 import ru.yandex.page.HomePage;
 import ru.yandex.page.OrderPage;
-import ru.yandex.page.Profile;
+import ru.yandex.services.Profile;
 import ru.yandex.services.Service;
 
 @RunWith(Parameterized.class)
@@ -47,8 +47,8 @@ public class RunTestOrder {
     @Parameterized.Parameters
     public static Object[][] getCredentials() {
         return new Object[][] {
-                {"Антон", "Чехов", "119049, г Москва, ул Донская, д 8", "89001002030", "Сокол", "тесте № 1"},
-                {"Александр", "Пушкин", "101000, г Москва, ул Пушкина, д Колотушкина","+79991002039", "Лубянка", "тесте № 2"}
+                {"Антон", "Чехов", "119049, г Москва, ул Донская, д 8", "89001002030", "Сокол", "Комментарий в тесте № 1"},
+                {"Александр", "Пушкин", "101000, г Москва, ул Пушкина, д Колотушкина","+79991002039", "Лубянка", " Комментарий в тесте № 2"}
         };
     }
     @Before
@@ -71,28 +71,12 @@ public class RunTestOrder {
     @Test
     public void test_N1() {
         objService.orderInTop();
+//      objService.orderInDown();
         objProfile.profileData(name, surname, address, phoneNumber, station);
         objService.click(objOrderPage.getNext());
         objProfile.Orderrer();
-        objService.click(objOrderPage.getBlackScooter())
+        objService.click(objOrderPage.getColorScooter())
                 .inputText(objOrderPage.getComment(),comment)
-                .click((objOrderPage.getOrder()))
-                .click((objOrderPage.getPlaceAnOrderYes()));
-
-        assertTrue("Отсутствует сообщение об успешном завершении заказа",
-                objService.isElementPresent(objOrderPage.orderPlaced));
-
-    }
-
-  //  @Test
-    public void test_N2() {
-        objService.orderInDown();
-        objProfile.profileData("Александр", "Пушкин",
-                "101000, г Москва, ул Пушкина, д Колотушкина","+79991002039", "Лубянка");
-        objService.click(objOrderPage.getNext());
-        objProfile.Orderrer();
-        objService.click(objOrderPage.getGreyScooter())
-                .inputText(objOrderPage.getComment(), " в тесте № 2")
                 .click((objOrderPage.getOrder()))
                 .click((objOrderPage.getPlaceAnOrderYes()));
 

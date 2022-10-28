@@ -12,8 +12,8 @@ public class Questions {
     public Questions(FirefoxDriver driver) { this.driver = driver; }
 
     // Локаторы из списка вопросов и ответов
-    private final By listQuestions = By.xpath("//*[@class='accordion__button']");
-    private final By listAnswer = By.xpath("//div[@data-accordion-component='AccordionItemPanel']");
+    private final By listQuestions = By.xpath("//*[@class='accordion__button']"); // элемент вопросов
+    private final By listAnswer = By.xpath("//div[@data-accordion-component='AccordionItemPanel']"); // элемент ответов
 
     // Коллекция из элементов вопросов
     public List<WebElement> getListQuestions() { return driver.findElements(listQuestions); }

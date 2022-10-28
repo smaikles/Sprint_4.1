@@ -12,11 +12,11 @@ public class HomePage {
     }
 
     // Локаторы на главной странице
-    private final By cookie = By.id("rcc-confirm-button");
-    private final By img = By.xpath("//img[@alt='Scooter blueprint']");
-    private final By modQuest = By.xpath("//div[text() = 'Вопросы о важном']");
-    private final By orderedTop = By.className("Button_Button__ra12g");
-    private final By orderedDown = By.xpath("//button[contains(@class, 'Button_Middle')]");
+    private final By cookie = By.id("rcc-confirm-button");  // кнопка закрыть куки
+    private final By img = By.xpath("//img[@alt='Scooter blueprint']"); // элемент на главной станице картинка
+    private final By modQuest = By.xpath("//div[text() = 'Вопросы о важном']"); // элемент заголовка Вопросы о важном
+    private final By orderedTop = By.className("Button_Button__ra12g"); // кнопка заказать вверху сайта
+    private final By orderedDown = By.xpath("//button[contains(@class, 'Button_Middle')]"); // кнопка заказать внизу сайта
 
     // Преобразование локаторов в вебэлементы
     public By getImg() {
