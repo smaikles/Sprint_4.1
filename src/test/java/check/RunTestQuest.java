@@ -7,9 +7,9 @@ import org.junit.Test;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-import page.HomePage;
+import pageobject.HomePage;
 import services.Service;
-import page.Questions;
+import pageobject.Questions;
 
 import static org.hamcrest.CoreMatchers.endsWith;
 
@@ -35,7 +35,7 @@ public class RunTestQuest {
         objService.checkInQuest();
 
     }
-
+// коллекция тестов для проверки блока Вопросы о важном
     @Test
     public void test_N1() {
         objService.click(objQuestions.getListQuestions().get(0));

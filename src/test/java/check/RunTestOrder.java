@@ -11,8 +11,8 @@ import org.junit.runners.Parameterized;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
-import page.HomePage;
-import page.OrderPage;
+import pageobject.HomePage;
+import pageobject.OrderPage;
 import services.Profile;
 import services.Service;
 
