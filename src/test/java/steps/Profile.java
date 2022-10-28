@@ -1,6 +1,7 @@
 package steps;
 
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import pageobject.OrderPage;
@@ -10,10 +11,10 @@ import services.Service;
 public class Profile {
 
     public OrderPage objOrderPage;
-    public FirefoxDriver driver;
+    private WebDriver driver;
     public Service objService;
 
-    public Profile(FirefoxDriver driver) {
+    public Profile(WebDriver driver) {
         this.driver = driver;
     }
 

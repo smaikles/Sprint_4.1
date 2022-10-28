@@ -4,16 +4,17 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
 import pageobject.HomePage;
 import services.Service;
 
 
-import static org.hamcrest.CoreMatchers.endsWith;
 
+import static org.junit.matchers.JUnitMatchers.containsString;
 
+@RunWith(Parameterized.class)
 public class RunTestQuest {
 
     public ChromeDriver driver;
@@ -21,12 +22,29 @@ public class RunTestQuest {
     public HomePage objHomePage;
     public Service objService;
 
+    private final String checkedText;
+    private final int num;
+
+
+    public RunTestQuest(String checkedText, int num) {
+        this.checkedText = checkedText;
+        this.num = num;
+            }
+
+    @Parameterized.Parameters
+    public static Object[][] getTestData() {
+        return new Object[][] {
+                {"или картой.",0},
+                {"один за другим.",1},
+                {"9 мая в 20:30.",2},
+        };
+    }
+
     @Before
     public void setUp() {
 
         driver = new ChromeDriver();
-        FirefoxOptions firefoxOptions = new FirefoxOptions();
-        FirefoxDriver driver = new FirefoxDriver(firefoxOptions);
+
         objService = new Service(driver);
         objHomePage = new HomePage(driver);
         System.out.println("test start");
@@ -37,12 +55,11 @@ public class RunTestQuest {
     }
 // коллекция тестов для проверки блока Вопросы о важном
     @Test
-    public void test_n1() {
-        objService.click(objHomePage.getListQuestions().get(0));
-        String good = "Сутки — 400 рублей. Оплата курьеру — наличными или картой.";
-        Assert.assertEquals("Текс не совпадает с ОР: ", objHomePage.getListAnswer().get(0).getText(), good);
+    public void test_n() {
+        objService.click(objHomePage.getListQuestions().get(num));
+        Assert.assertThat("Текс не совпадает с ОР: ", objHomePage.getListAnswer().get(num).getText(), containsString(checkedText));
     }
-
+/*
     @Test
     public void test_n2() {
 
@@ -100,11 +117,11 @@ public class RunTestQuest {
         String good = "Да, обязательно. Всем самокатов! И Москве, и Московской области.";
         Assert.assertEquals("Текс не совпадает с ОР: ", objHomePage.getListAnswer().get(7).getText(), good);
     }
-
+*/
     @After
     public void teardown() {
         System.out.println("test close");
-        driver.quit();
+      //  driver.quit();
     }
 
 }

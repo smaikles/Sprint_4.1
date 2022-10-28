@@ -2,8 +2,9 @@ package services;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
+
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pageobject.HomePage;
@@ -12,10 +13,9 @@ import pageobject.HomePage;
 public class Service {
     public HomePage objHomePage;
     private WebElement element;
-    //    private final ChromeDriver driver;
-    private final FirefoxDriver driver;
+    private WebDriver driver;
 
-    public Service(FirefoxDriver driver) {
+    public Service(WebDriver driver) {
         this.driver = driver;
     }
 

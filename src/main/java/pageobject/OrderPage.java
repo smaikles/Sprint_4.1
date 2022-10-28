@@ -1,14 +1,14 @@
 package pageobject;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
+
 
 
 // Класс содержит локаторы и вебэлементы для оформления заказа
 public class OrderPage {
-    private final FirefoxDriver driver;
-    public OrderPage(FirefoxDriver driver) { this.driver = driver; }
+    private WebDriver driver;
 
 
     // Локаторы для проверки второго сценария
@@ -30,6 +30,10 @@ public class OrderPage {
     private final By order = By.xpath("//div[@class='Order_Buttons__1xGrp']//button[contains(text(), 'Заказать')]"); // кнопка заказать
     private final By placeAnOrderYes = By.xpath("//button[contains(text(), 'Да')]"); // кнопка подтверждения заказа
     public final By orderPlaced = By.xpath("//div[(text()= 'Заказ оформлен')]");  // элемент страницы подтвержденного заказа
+
+    public OrderPage(WebDriver driver) {
+        this.driver = driver;
+    }
 
 
     // Преобразование локаторов в вебэлементы

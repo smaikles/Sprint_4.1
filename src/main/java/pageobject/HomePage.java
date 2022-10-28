@@ -1,17 +1,15 @@
 package pageobject;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
+
 
 import java.util.List;
 
 // Класс содержит локаторы и вебэлементы главной странице
 public class HomePage {
-    private final FirefoxDriver driver;
-    public HomePage(FirefoxDriver driver) {
-        this.driver = driver;
-    }
+    private WebDriver driver;
 
     // Локаторы на главной странице
     private final By cookie = By.id("rcc-confirm-button");  // кнопка закрыть куки
@@ -23,6 +21,10 @@ public class HomePage {
     // Локаторы из списка вопросов и ответов
     private final By listQuestions = By.xpath("//*[@class='accordion__button']"); // элемент вопросов
     private final By listAnswer = By.xpath("//div[@data-accordion-component='AccordionItemPanel']"); // элемент ответов
+
+    public HomePage(WebDriver driver) {
+        this.driver = driver;
+    }
 
     // Преобразование локаторов в вебэлементы
     public By getImg() {
