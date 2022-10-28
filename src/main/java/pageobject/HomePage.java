@@ -4,12 +4,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-
 import java.util.List;
 
 // Класс содержит локаторы и вебэлементы главной странице
 public class HomePage {
     private WebDriver driver;
+    public HomePage(WebDriver driver) { this.driver = driver; }
 
     // Локаторы на главной странице
     private final By cookie = By.id("rcc-confirm-button");  // кнопка закрыть куки
@@ -22,9 +22,7 @@ public class HomePage {
     private final By listQuestions = By.xpath("//*[@class='accordion__button']"); // элемент вопросов
     private final By listAnswer = By.xpath("//div[@data-accordion-component='AccordionItemPanel']"); // элемент ответов
 
-    public HomePage(WebDriver driver) {
-        this.driver = driver;
-    }
+
 
     // Преобразование локаторов в вебэлементы
     public By getImg() {
@@ -40,9 +38,13 @@ public class HomePage {
     public WebElement getOrderedDown() { return driver.findElement(orderedDown); }
 
     // Коллекция из элементов вопросов
-    public List<WebElement> getListQuestions() { return driver.findElements(listQuestions); }
+    public List<WebElement> getListQuestions() {
+        return driver.findElements(listQuestions);
+    }
 
     // Коллекция из элементов ответов
-    public List<WebElement> getListAnswer() { return driver.findElements(listAnswer); }
+    public List<WebElement> getListAnswer() {
+        return driver.findElements(listAnswer);
+    }
 
 }

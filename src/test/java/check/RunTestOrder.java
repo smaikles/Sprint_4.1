@@ -9,8 +9,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
+
 
 import pageobject.HomePage;
 import pageobject.OrderPage;
@@ -20,7 +19,7 @@ import services.Service;
 @RunWith(Parameterized.class)
 public class RunTestOrder {
 
-       public ChromeDriver driver;
+    public ChromeDriver driver;
 
 
     public Service objService;
@@ -50,20 +49,20 @@ public class RunTestOrder {
     @Parameterized.Parameters
     public static Object[][] getData() {
         return new Object[][]{
-                {"Антон", "Чехов", "119049, г Москва, ул Донская, д 18", "89001002030", "Сокол", "Комментарий в тесте № 1", "заказать внизу"},
-                {"Александр", "Пушкин", "101000, г Москва, ул Пушкина, д 7", "+79991002039", "Лубянка", " Комментарий в тесте № 2", "заказать вверху"}
+                {"Антон", "Чехов", "119049, г Москва, ул Донская, д 18", "89001002030", "Сокол", "Комментарий в тесте № 1", "Заказ вверху"},
+                {"Александр", "Пушкин", "101000, г Москва, ул Пушкина, д 7", "+79991002039", "Лубянка", " Комментарий в тесте № 2", "Заказ внизу"}
         };
 
     }
 
     @Before
     public void setUpOrder() {
-          driver = new ChromeDriver();
+        driver = new ChromeDriver();
 
-        objService = new Service(driver);
         objOrderPage = new OrderPage(driver);
         objHomePage = new HomePage(driver);
         objProfile = new Profile(driver);
+        objService = new Service(driver);
 
         System.out.println("test start");
 
@@ -73,20 +72,18 @@ public class RunTestOrder {
     }
 
 
-    @Test // Создает заказ с нижней кнопки
+    @Test // Создание заказа
     public void orderIn() {
 
-        if(orderButton.equals("заказать внизу")){
-            System.out.println("555555555");
-            objService.click(objHomePage.getOrderedDown());
-        } else {
+        if (orderButton.equals("Заказ вверху")) {
             objService.click(objHomePage.getOrderedTop());
+        } else {
+            objService.click(objHomePage.getOrderedDown());
         }
 
         objProfile.profileData(name, surname, address, phoneNumber, station);
         objService.click(objOrderPage.getNext());
         objProfile.Orderrer();
-
         objService.click(objOrderPage.getGreyScooter())
                 .inputText(objOrderPage.getComment(), comment)
                 .click((objOrderPage.getOrder()))
@@ -100,7 +97,7 @@ public class RunTestOrder {
     @After
     public void teardown() {
         System.out.println("test close");
-//          driver.quit();
+        driver.quit();
 
     }
 }

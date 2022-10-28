@@ -2,7 +2,6 @@ package steps;
 
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import pageobject.OrderPage;
 import services.Service;

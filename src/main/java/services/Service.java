@@ -12,9 +12,7 @@ import pageobject.HomePage;
 // Класс описывает большинство однообразных действий
 public class Service {
     public HomePage objHomePage;
-    private WebElement element;
     private WebDriver driver;
-
     public Service(WebDriver driver) {
         this.driver = driver;
     }
